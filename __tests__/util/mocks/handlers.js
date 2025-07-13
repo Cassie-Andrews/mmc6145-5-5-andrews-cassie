@@ -1,4 +1,4 @@
-import { rest } from 'msw'
+import { rest } from 'msw/node'
 import recipeSearchResults from './recipeSearchResults.json'
 import recipeResult from './recipeResult.json'
 import { vi } from 'vitest'
