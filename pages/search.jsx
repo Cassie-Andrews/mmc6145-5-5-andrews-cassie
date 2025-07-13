@@ -7,9 +7,11 @@ import { searchRecipes } from '../util/recipe'
 import styles from '../styles/search.module.css'
 
 // TODO: destructure query from argument passed to getServerSideProps
-export async function getServerSideProps() {
+export async function getServerSideProps({ query }) {
   const props = {}
+  const { q = ""} = query
   // TODO: use searchRecipes to attach recipes prop based on query parameter
+  props.recipes = await searchRecipes(q)
   return { props }
 }
 
@@ -21,6 +23,8 @@ export default function Search({recipes}) {
     e.preventDefault()
     if (!query.trim()) return
     // TODO: Use router.replace with router.pathname + queryString to send query to getServerSideProps
+    const queryString = `?q={encodedURIComponent(query.trim())}`
+    router.replace(router.pathname + queryString)
   }
   return (
     <>
