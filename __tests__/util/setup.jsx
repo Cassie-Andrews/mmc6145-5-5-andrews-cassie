@@ -3,6 +3,15 @@ import { cleanup, configure } from '@testing-library/react'
 import { server } from './mocks/server'
 import '@testing-library/jest-dom'
 
+export const mockRouter = {
+  query: {id: null},
+  push: vi.fn(),
+  replace: vi.fn(),
+  asPath: null,
+  pathname: null,
+  back: vi.fn()
+}
+
 vi.mock('next/router', () => ({
   useRouter: () => mockRouter
 }))
@@ -32,11 +41,4 @@ afterEach(() => {
   cleanup()
 })
 
-export const mockRouter = {
-  query: {id: null},
-  push: vi.fn(),
-  replace: vi.fn(),
-  asPath: null,
-  pathname: null,
-  back: vi.fn()
-}
+

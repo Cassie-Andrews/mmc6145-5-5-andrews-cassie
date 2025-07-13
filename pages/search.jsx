@@ -52,6 +52,7 @@ export default function Search({recipes}) {
             recipes.map(recipe => (
               <RecipePreview 
                 key={recipe.id}
+                id={recipe.id}
                 title={recipe.title}
                 image={recipe.image}
               />
